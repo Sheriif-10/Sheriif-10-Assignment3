@@ -291,3 +291,28 @@ int b = 10;
 Console.WriteLine(a & b);
 Console.WriteLine(a | b);
 Console.WriteLine(a^b);
+
+// Bitwise & evaluates both operands bit by bit, while logical && short-circuits and does not evaluate the right operand when the left operand is false.
+//-----------------------------------------------
+// Part F - LeetCode 136
+
+int[] nums1 = { 4, 1, 2, 1, 2 };
+int[] nums2 = { 7, 3, 5, 3, 5, 7, 9 };
+
+Console.WriteLine($"Single number in nums1: {FindSingleNumber(nums1)}");
+Console.WriteLine($"Single number in nums2: {FindSingleNumber(nums2)}");
+
+static int FindSingleNumber(int[] nums)
+{
+    int result = 0;
+
+    foreach (int num in nums)
+    {
+        result ^= num;
+    }
+
+    return result;
+}
+
+// XOR has two important properties: a ^ a = 0 and a ^ 0 = a.
+// Therefore, every number that appears twice cancels out, leaving only the number that appears once.
