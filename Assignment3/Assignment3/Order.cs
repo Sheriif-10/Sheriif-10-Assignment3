@@ -13,6 +13,8 @@
         public char Priority;
         public long ItemCode;
 
+        private static int fieldValue = 100;  /*from part D */
+
         public void CalculateTotal()
         {
             TotalPrice = Quantity * UnitPrice * (decimal)(1 - DiscountPercent / 100);
@@ -21,6 +23,15 @@
         public void PrintSummary()
         {
             Console.WriteLine($"OrderId: {OrderId}, CustomerName: {CustomerName}, TotalPrice: {TotalPrice}, IsPaid: {IsPaid}");
+        }
+
+        static void MethodOne()
+        {
+            Console.WriteLine(fieldValue);
+        }
+        static void MethodTwo()
+        {
+            Console.WriteLine(fieldValue);
         }
     }
 }

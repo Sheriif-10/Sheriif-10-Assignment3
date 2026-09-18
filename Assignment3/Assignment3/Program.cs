@@ -228,3 +228,66 @@ Order o3 = (Order)boxedOrder;
 Console.WriteLine(object.ReferenceEquals(o1,o3));
 
 o2.PrintSummary();
+
+// Experiment 1 - Struct Copy Semantics
+// Point is a struct, so it is a value type.
+// When p1 is assigned to p2, the value is copied.
+// This means p1 and p2 contain separate copies of the data.
+// Therefore, changing p2.X does not affect p1.X.
+
+// Experiment 2 - Class Reference Semantics
+// Order is a class, so it is a reference type.
+// When o1 is assigned to o2, the reference is copied, not the object itself.
+// Both o1 and o2 refer to the same object in memory.
+// Therefore, changing o2.IsPaid also changes what is seen through o1.
+
+// Object Reference
+// Storing o1 in an object variable does not create a new object or cause boxing,
+// because Order is already a reference type.
+// The object variable stores a reference to the same Order object.
+// Casting boxedOrder back to Order gives us the same reference.
+// Therefore, ReferenceEquals(o1, o3) returns true.
+
+// Stack vs Heap
+// Value types store their values directly, while reference-type variables store references to objects.
+// Assigning a value type copies the value, while assigning a reference type copies the reference.
+// The object created with new Order() is stored on the managed heap,
+// while o1 and o2 hold references to that object.
+// The stack/heap model is a simplified way to understand these concepts,
+// but the main difference is value semantics versus reference semantics.
+
+//-----------------------------------------------------
+//partial D 
+MethodScopeDemo();
+static void MethodScopeDemo()
+{
+    int localValue = 50;
+
+    Console.WriteLine(localValue);
+}
+//Console.WriteLine(localValue); /* method scope */ 
+
+for(int i =0; i<=5; i++)
+{
+    Console.WriteLine(i);
+}
+//Console.WriteLine(i); /* block scope */ 
+
+
+int total = 100;
+total += 2;
+total -= 2;
+total *= 2;
+total /= 2;
+Console.WriteLine(total);
+total %= 2;
+Console.WriteLine(total);
+total = total + 5;
+Console.WriteLine(total);
+
+//----------------------------------
+int a = 12;
+int b = 10;
+Console.WriteLine(a & b);
+Console.WriteLine(a | b);
+Console.WriteLine(a^b);
