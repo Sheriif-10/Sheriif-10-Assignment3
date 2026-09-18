@@ -1,0 +1,15 @@
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\bin\Debug\net10.0\Assignment3.exe
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\bin\Debug\net10.0\Assignment3.deps.json
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\bin\Debug\net10.0\Assignment3.runtimeconfig.json
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\bin\Debug\net10.0\Assignment3.dll
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\bin\Debug\net10.0\Assignment3.pdb
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.GeneratedMSBuildEditorConfig.editorconfig
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.AssemblyInfoInputs.cache
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.AssemblyInfo.cs
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.csproj.CoreCompileInputs.cache
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.sourcelink.json
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.dll
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\refint\Assignment3.dll
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.pdb
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\Assignment3.genruntimeconfig.cache
+D:\Assignment 3\Sheriif-10-Assignment3\Assignment3\Assignment3\obj\Debug\net10.0\ref\Assignment3.dll

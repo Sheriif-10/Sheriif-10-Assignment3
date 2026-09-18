@@ -1,0 +1,318 @@
+﻿using Assignment3;
+using System.Collections;
+using static System.Net.Mime.MediaTypeNames;
+
+Console.WriteLine("Part A");
+/* Explain  .csproj 
+
+1- target framework (version ex: .NET10)
+2- Enable - Disable Features 
+3- package or library use 
+4- output type (ex: exe)
+5- SDK Type
+
+*/
+
+//------------------------------------ 
+
+/*  Program.cs (Entry Point  => start runtime exexution)
+
+Program.cs is the entry point of the application — the file that contains the Main method,
+which is the first code that runs when the program starts.
+
+*/
+
+//-----------------------------------------------
+
+/* obj /, and bin/.
+
+bin:
+The folder where your program's final, ready-to-run files go (like the .exe or .dll).
+
+obj:
+A temporary folder the compiler uses while building your project, to help it build faster next time.
+
+*/
+//-----------------------------------------------------
+
+/* Sln vs Slnx 
+
+sln (classic): old format, hard to read, can cause conflicts when 
+teammates edit it at the same time — but works with almost every tool.
+
+slnx (new): newer XML format, easy to read and edit — but not fully 
+supported everywhere yet.
+
+*/
+
+//--------------------------------------------
+//Part B  
+Console.WriteLine("Part B");
+RunTypesDemo();
+static void RunTypesDemo()
+{
+    // 1. Variables & Types
+
+    int age = 22;
+    long population = 1000000L;
+    double price = 19.99;
+    decimal salary = 15000.50m;
+    bool isActive = true;
+    char grade = 'A';
+    string name = "Sherif";
+    var number = 42;
+
+    Console.WriteLine($"int: {age}, Type: {age.GetType()}");
+    Console.WriteLine($"long: {population}, Type: {population.GetType()}");
+    Console.WriteLine($"double: {price}, Type: {price.GetType()}");
+    Console.WriteLine($"decimal: {salary}, Type: {salary.GetType()}");
+    Console.WriteLine($"bool: {isActive}, Type: {isActive.GetType()}");
+    Console.WriteLine($"char: {grade}, Type: {grade.GetType()}");
+    Console.WriteLine($"string: {name}, Type: {name.GetType()}");
+    Console.WriteLine($"var: {number}, Type: {number.GetType()}");
+
+    // 2. Implicit conversion
+
+    int intValue = 100;
+    long longValue = intValue;
+
+    char character = 'A';
+    int charValue = character;
+
+    Console.WriteLine($"int to long: {longValue}");
+    Console.WriteLine($"char to int: {charValue}");
+
+    // No cast is required because these conversions are implicitly supported by C#.
+
+    // 3. Explicit conversion
+
+    double decimalValue = 9.8;
+
+    int castResult = (int)decimalValue;
+    int convertResult = Convert.ToInt32(decimalValue);
+
+    Console.WriteLine($"(int): {castResult}");
+    Console.WriteLine($"Convert.ToInt32: {convertResult}");
+
+    // (int) truncates the fractional part, while Convert.ToInt32 rounds the value.
+
+    // 4. Integer division
+
+    int integerDivision = 5 / 2;
+    double doubleDivision = 5.0 / 2;
+
+    Console.WriteLine($"5 / 2: {integerDivision}");
+    Console.WriteLine($"5.0 / 2: {doubleDivision}");
+
+    // Integer division discards the fractional part, while double division keeps it.
+
+    // 5. Boxing / Unboxing
+
+    int originalValue = 42;
+    object boxedValue = originalValue;
+
+    Console.WriteLine($"After boxing: {boxedValue}");
+
+    int unboxedValue = (int)boxedValue;
+
+    Console.WriteLine($"After unboxing: {unboxedValue}");
+
+    // 6. Parsing
+
+    string validInput = "42";
+    int parsedValue = int.Parse(validInput);
+
+    Console.WriteLine($"Parsed value: {parsedValue}");
+
+    string invalidInput = "abc";
+    bool success = int.TryParse(invalidInput, out int tryParsedValue);
+
+    Console.WriteLine($"TryParse succeeded: {success}");
+
+    if (!success)
+    {
+        Console.WriteLine("Parsing failed.");
+    }
+
+    // 7. float to decimal
+
+    float floatValue = 10.5f;
+
+    // decimal decimalValue = floatValue;
+
+    decimal convertedDecimal = (decimal)floatValue;
+
+    Console.WriteLine($"float to decimal: {convertedDecimal}");
+
+    // The implicit conversion is not allowed because float to decimal may involve precision differences,
+    // so an explicit cast is required.
+}
+//-----------------------------------------------
+// Part C 
+Console.WriteLine("part C");
+/*
+
+Q1-
+
+
+STACK
+
+┌─────────────────┐
+│ p2              │
+│ X = 1           │
+│ Y = 2           │
+├─────────────────┤
+│ p1              │
+│ X = 1           │
+│ Y = 2           │
+└─────────────────┘
+وبعدين 
+STACK
+┌─────────────────┐
+│ p2              │
+│ X = 99  ← تغيرت
+│ Y = 2           │
+├─────────────────┤
+│ p1              │
+│ X = 1   ← زي ما هي
+│ Y = 2           │
+└─────────────────┘
+
+*/
+/*
+Point p1 = new Point { X = 1, Y = 2 };
+Point p2 = p1;
+
+p2.X = 99;
+
+Console.WriteLine($"p1.X = {p1.X}");
+Console.WriteLine($"p2.X = {p2.X}");
+*/
+
+// Point is a struct, so it is a value type. Assigning p1 to p2 copies the value,
+// so changing p2 does not affect p1.
+
+//struct Point
+//{
+//    public int X;
+//    public int Y;
+//}
+
+
+//Q2-
+
+Order o1 = new Order
+{
+    OrderId = 1001,
+    CustomerName = "Sherif",
+    Quantity = 3,
+    UnitPrice = 250m,
+    TotalPrice = 0m,
+    IsPaid = false,
+    DiscountPercent = 10,
+    ShippingCity = "Mansoura",
+    Priority = 'H',
+    ItemCode = 123456789L
+};
+
+o1.CalculateTotal();
+
+Order o2 = o1;
+o2.IsPaid = true;
+Console.WriteLine(o1.IsPaid);
+Console.WriteLine(o2.IsPaid);
+
+
+object boxedOrder = o1;
+Order o3 = (Order)boxedOrder;
+Console.WriteLine(object.ReferenceEquals(o1,o3));
+
+o2.PrintSummary();
+
+// Experiment 1 - Struct Copy Semantics
+// Point is a struct, so it is a value type.
+// When p1 is assigned to p2, the value is copied.
+// This means p1 and p2 contain separate copies of the data.
+// Therefore, changing p2.X does not affect p1.X.
+
+// Experiment 2 - Class Reference Semantics
+// Order is a class, so it is a reference type.
+// When o1 is assigned to o2, the reference is copied, not the object itself.
+// Both o1 and o2 refer to the same object in memory.
+// Therefore, changing o2.IsPaid also changes what is seen through o1.
+
+// Object Reference
+// Storing o1 in an object variable does not create a new object or cause boxing,
+// because Order is already a reference type.
+// The object variable stores a reference to the same Order object.
+// Casting boxedOrder back to Order gives us the same reference.
+// Therefore, ReferenceEquals(o1, o3) returns true.
+
+// Stack vs Heap
+// Value types store their values directly, while reference-type variables store references to objects.
+// Assigning a value type copies the value, while assigning a reference type copies the reference.
+// The object created with new Order() is stored on the managed heap,
+// while o1 and o2 hold references to that object.
+// The stack/heap model is a simplified way to understand these concepts,
+// but the main difference is value semantics versus reference semantics.
+
+//-----------------------------------------------------
+//partial D 
+MethodScopeDemo();
+static void MethodScopeDemo()
+{
+    int localValue = 50;
+
+    Console.WriteLine(localValue);
+}
+//Console.WriteLine(localValue); /* method scope */ 
+
+for(int i =0; i<=5; i++)
+{
+    Console.WriteLine(i);
+}
+//Console.WriteLine(i); /* block scope */ 
+
+
+int total = 100;
+total += 2;
+total -= 2;
+total *= 2;
+total /= 2;
+Console.WriteLine(total);
+total %= 2;
+Console.WriteLine(total);
+total = total + 5;
+Console.WriteLine(total);
+
+//----------------------------------
+int a = 12;
+int b = 10;
+Console.WriteLine(a & b);
+Console.WriteLine(a | b);
+Console.WriteLine(a^b);
+
+// Bitwise & evaluates both operands bit by bit, while logical && short-circuits and does not evaluate the right operand when the left operand is false.
+//-----------------------------------------------
+// Part F - LeetCode 136
+
+int[] nums1 = { 4, 1, 2, 1, 2 };
+int[] nums2 = { 7, 3, 5, 3, 5, 7, 9 };
+
+Console.WriteLine($"Single number in nums1: {FindSingleNumber(nums1)}");
+Console.WriteLine($"Single number in nums2: {FindSingleNumber(nums2)}");
+
+static int FindSingleNumber(int[] nums)
+{
+    int result = 0;
+
+    foreach (int num in nums)
+    {
+        result ^= num;
+    }
+
+    return result;
+}
+
+// XOR has two important properties: a ^ a = 0 and a ^ 0 = a.
+// Therefore, every number that appears twice cancels out, leaving only the number that appears once.
