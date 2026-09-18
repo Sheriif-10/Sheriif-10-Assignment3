@@ -1,4 +1,8 @@
-﻿Console.WriteLine("Part A");
+﻿using Assignment3;
+using System.Collections;
+using static System.Net.Mime.MediaTypeNames;
+
+Console.WriteLine("Part A");
 /* Explain  .csproj 
 
 1- target framework (version ex: .NET10)
@@ -143,3 +147,84 @@ static void RunTypesDemo()
     // The implicit conversion is not allowed because float to decimal may involve precision differences,
     // so an explicit cast is required.
 }
+//-----------------------------------------------
+// Part C 
+Console.WriteLine("part C");
+/*
+
+Q1-
+
+
+STACK
+
+┌─────────────────┐
+│ p2              │
+│ X = 1           │
+│ Y = 2           │
+├─────────────────┤
+│ p1              │
+│ X = 1           │
+│ Y = 2           │
+└─────────────────┘
+وبعدين 
+STACK
+┌─────────────────┐
+│ p2              │
+│ X = 99  ← تغيرت
+│ Y = 2           │
+├─────────────────┤
+│ p1              │
+│ X = 1   ← زي ما هي
+│ Y = 2           │
+└─────────────────┘
+
+*/
+/*
+Point p1 = new Point { X = 1, Y = 2 };
+Point p2 = p1;
+
+p2.X = 99;
+
+Console.WriteLine($"p1.X = {p1.X}");
+Console.WriteLine($"p2.X = {p2.X}");
+*/
+
+// Point is a struct, so it is a value type. Assigning p1 to p2 copies the value,
+// so changing p2 does not affect p1.
+
+//struct Point
+//{
+//    public int X;
+//    public int Y;
+//}
+
+
+//Q2-
+
+Order o1 = new Order
+{
+    OrderId = 1001,
+    CustomerName = "Sherif",
+    Quantity = 3,
+    UnitPrice = 250m,
+    TotalPrice = 0m,
+    IsPaid = false,
+    DiscountPercent = 10,
+    ShippingCity = "Mansoura",
+    Priority = 'H',
+    ItemCode = 123456789L
+};
+
+o1.CalculateTotal();
+
+Order o2 = o1;
+o2.IsPaid = true;
+Console.WriteLine(o1.IsPaid);
+Console.WriteLine(o2.IsPaid);
+
+
+object boxedOrder = o1;
+Order o3 = (Order)boxedOrder;
+Console.WriteLine(object.ReferenceEquals(o1,o3));
+
+o2.PrintSummary();
